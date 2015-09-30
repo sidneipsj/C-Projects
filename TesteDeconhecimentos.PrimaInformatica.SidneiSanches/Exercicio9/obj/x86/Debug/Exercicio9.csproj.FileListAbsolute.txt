@@ -1,0 +1,4 @@
+c:\users\sidnei.bella-rpc\documents\visual studio 2010\Projects\TesteDeconhecimentos.PrimaInformatica.SidneiSanches\Exercicio9\bin\Debug\Exercicio9.exe
+c:\users\sidnei.bella-rpc\documents\visual studio 2010\Projects\TesteDeconhecimentos.PrimaInformatica.SidneiSanches\Exercicio9\bin\Debug\Exercicio9.pdb
+c:\users\sidnei.bella-rpc\documents\visual studio 2010\Projects\TesteDeconhecimentos.PrimaInformatica.SidneiSanches\Exercicio9\obj\x86\Debug\Exercicio9.exe
+c:\users\sidnei.bella-rpc\documents\visual studio 2010\Projects\TesteDeconhecimentos.PrimaInformatica.SidneiSanches\Exercicio9\obj\x86\Debug\Exercicio9.pdb
