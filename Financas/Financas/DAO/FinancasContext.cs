@@ -14,7 +14,7 @@ namespace Financas.DAO
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Movimentacao>().HasRequired(n->n.Usuario);
+            modelBuilder.Entity<Movimentacao>().HasRequired(n=>n.Usuario);
         }       
 
     }

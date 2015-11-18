@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BELLA_17_09" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.0.181;Initial Catalog=BELLA_17_09;Integrated Security=True" SettingsObjectName="ConsoleApplication1.Properties.Settings" SettingsPropertyName="BELLA_17_09ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CONVENIADOS" Member="CONVENIADOs">
+    <Type Name="CONVENIADO">
+      <Column Name="CONV_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EMPRES_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BANCO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GRUPO_CONV_EMP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CHAPA" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="SENHA" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="TITULAR" Type="System.String" DbType="VarChar(58) NOT NULL" CanBeNull="false" />
+      <Column Name="CONTRATO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LIMITE_MES" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+      <Column Name="LIBERADO" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="FIDELIDADE" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="APAGADO" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="DT_NASCIMENTO" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CARGO" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="SETOR" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="CPF" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="RG" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="LIMITE_TOTAL" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="LIMITE_PROX_FECHAMENTO" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="AGENCIA" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="CONTACORRENTE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DIGITO_CONTA" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="TIPOPAGAMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ENDERECO" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BAIRRO" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="CIDADE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ESTADO" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="CEP" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="TELEFONE1" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="TELEFONE2" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="CELULAR" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="OBS1" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="OBS2" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CESTABASICA" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="DTULTCESTA" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="SALARIO" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="TIPOSALARIO" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="COD_EMPRESA" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="FLAG" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DTASSOCIACAO" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DTAPAGADO" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DTALTERACAO" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="OPERADOR" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="DTCADASTRO" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="OPERCADASTRO" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="VALE_DESCONTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LIBERA_GRUPOSPROD" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="COMPLEMENTO" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="USA_SALDO_DIF" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ABONO_MES" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SALDO_RENOVACAO" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SALDO_ACUMULADO" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="DATA_ATUALIZACAO_ACUMULADO" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CONSUMO_MES_1" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="CONSUMO_MES_2" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="CONSUMO_MES_3" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="CONSUMO_MES_4" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="PIS" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="NOME_PAI" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="nome_mae" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="CART_TRAB_NUM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CART_TRAB_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="REGIME_TRAB" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="VENC_TOTAL" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="ESTADO_CIVIL" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="NUM_DEPENDENTES" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DATA_ADMISSAO" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DATA_DEMISSAO" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="FIM_CONTRATO" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DISTRITO" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="SALDO_DEVEDOR" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SALDO_DEVEDOR_FAT" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="SETOR_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CARTAO_BEM_ESTAR" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ENVIA_SMS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NAO_GERA_CARTAO_TITULAR" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TAXA_SERVICO_CANTINA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SENHA_CANTINEX" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
