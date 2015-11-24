@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,17 @@ namespace ConsoleApplication1
             }
 
             return conv;
+        }
+
+        public CONVENIADO getConveniado()
+        {
+            DBDataContext db = 
+                new DBDataContext();
+            var sql = from c in db.CONVENIADOs
+                        where SqlMethods.Like(c.TITULAR,"%Sid%")
+                        select c;
+
+            return (CONVENIADO)sql;
         }
     }
 }
