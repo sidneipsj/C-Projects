@@ -37,5 +37,22 @@ namespace ConsoleApplication1
 
             return (CONVENIADO)sql;
         }
+
+        public List<CONVENIADO> getConveniados (int conv_id)
+        {
+            DBDataContext db =
+                new DBDataContext();
+            int id;
+            var lconv = db.CONVENIADOs.Where(c => c.CONV_ID == conv_id);
+
+            List<CONVENIADO> conv = new List<CONVENIADO>();
+
+            foreach (var item in lconv)
+            {
+                conv.Add(item);
+            }
+
+            return conv;
+        }
     }
 }
