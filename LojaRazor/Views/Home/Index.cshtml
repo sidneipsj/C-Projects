@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Home - Index</title>
+    <link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/Style.css" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="sidebar-nav well">
+                    <ul class="nav nav-list">
+                        @foreach (var departamento in ViewBag.Departamentos)
+                        {
+                            <li class="nav-header">@departamento.Nome</li>                            
+                            foreach (var item in departamento.Categorias)
+                            {
+                                <li>@item.Nome</li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <!--Menu-->
+            </div>
+            <div class="span9">
+                <!--Conteudo-->
+                <div class="hero-unit">
+                    <h1>Queima de estoque</h1>
+                    <p>Monitores com 20% de desconto no cartão de crédito em 50 vezes sem juros</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
