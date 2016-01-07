@@ -1,0 +1,51 @@
+﻿@model IList<CaelumEstoque.Models.Produto>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <title>Cadastro de Produtos</title>
+</head>
+<body>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var produto in Model)
+                {
+                <tr>
+                    <td>@produto.Id</td>
+                    <td>@Html.ActionLink(produto.Nome, "Visualiza", new { id = produto.Id })</td>
+                    <td>@produto.Quantidade</td>
+                </tr>
+                }
+
+        </tbody>
+    </table>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        function decrementa(produtoId) {
+            var url = "@Url.Action("DecrementaQtd","Produto")";
+            var params = { id: produtoId };
+            $post(url, params, atualiza);
+        }
+
+        function atualiza(resposta) {
+            var elemento = $("#quantidade" + resposta.Id);
+            elemento.html(resposta.Quantidade);
+        }
+    </script>
+</body>
+</html>
