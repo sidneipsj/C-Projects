@@ -1,0 +1,29 @@
+﻿@model  CONTATO2
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-9">
+                @using (Html.BeginForm("Cadastra", "Contato", FormMethod.Post))
+                {
+                    @Html.LabelFor(c => c.NOME);
+                    @Html.TextBoxFor(c => c.NOME)<br/>
+                    @Html.LabelFor(c => c.EMAIL)
+                    @Html.TextBoxFor(c => c.EMAIL)<br/>
+                    <input type="submit" value="Register" />
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
