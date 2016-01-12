@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DEVMEDIAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DEVMEDIA.dbo.ACESSO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ACESSO">
+    <Key>
+      <PropertyRef Name="ID_LOGIN" />
+    </Key>
+    <Property Name="ID_LOGIN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="SENHA" Type="varchar" MaxLength="100" />
+    <Property Name="ATIVO" Type="char" MaxLength="1" />
+    <Property Name="PERFIL" Type="varchar" MaxLength="15" />
+    <Property Name="NOME" Type="varchar" MaxLength="30" />
+    <Property Name="SOBRENOME" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityContainer Name="DEVMEDIAModelStoreContainer">
+    <EntitySet Name="ACESSO" EntityType="Self.ACESSO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ACESSO].[ID_LOGIN] AS [ID_LOGIN], 
+    [ACESSO].[EMAIL] AS [EMAIL], 
+    [ACESSO].[SENHA] AS [SENHA], 
+    [ACESSO].[ATIVO] AS [ATIVO], 
+    [ACESSO].[PERFIL] AS [PERFIL], 
+    [ACESSO].[NOME] AS [NOME], 
+    [ACESSO].[SOBRENOME] AS [SOBRENOME]
+    FROM [dbo].[ACESSO] AS [ACESSO]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

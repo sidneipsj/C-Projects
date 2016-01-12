@@ -1,35 +1,18 @@
-﻿input{
-    margin: 0.5em;
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 
-input[type=submit]{
-    background-color: rgb(66,139,202);
-    border:0;
-    padding: .5em;
-    color: white;
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-select {
-    margin: 0.5em 0.5em 0;
-    padding: .5em;
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
 }
 
-.field-validation-error {
-    padding: 0.5em;
-    width: 100%;
-    display: block;
-    color: red;
-}
-
-.input-validation-error{
-    background-color: #ffd6d6;
-}
-
-aside ul{
-    padding: 0;
-}
-
-aside ul li{
-    list-style-type: none;
-    margin: .5em 1em;
-}

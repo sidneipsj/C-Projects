@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/Style.css" />
+</head>
+<body>
+    @Html.Partial("_MenuSuperior")
+    <div class="container-fluid">
+
+        <div class="row-fluid">
+            <div class="span3">
+                <!-- código do menu lateral -->
+                @Html.Action("Index", "Menu")
+            </div>
+
+            <div class="span9">
+                <!-- Precisamos substituir o conteúdo dessa div -->
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @RenderSection("Scripts",false)
+</body>
+</html>

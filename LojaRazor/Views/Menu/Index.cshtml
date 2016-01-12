@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Home - Index</title>
+
+</head>
+<body>
+    <div class="sidebar-nav well">
+        <ul>
+            @foreach (var departamento in ViewBag.Departamentos)
+            {
+                <li class="nav-header">@departamento.Nome</li>
+                foreach (var categoria in departamento.Categorias)
+                {
+                    <li>@categoria.Nome</li>
+                }
+            }
+        </ul>
+    </div>
+</body>
+</html>

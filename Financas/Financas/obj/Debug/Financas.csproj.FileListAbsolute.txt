@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Sidnei\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\Financas.dll.config
 C:\Users\Sidnei\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\Financas.dll
 C:\Users\Sidnei\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\Financas.pdb
@@ -29,3 +30,29 @@ C:\Users\Sidnei\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financ
 C:\Users\Sidnei\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\obj\Debug\Financas.dll
 C:\Users\Sidnei\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\obj\Debug\Financas.pdb
 C:\Users\Sidnei\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\obj\Debug\Financas.csprojResolveAssemblyReference.cache
+=======
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\obj\Debug\Financas.csprojResolveAssemblyReference.cache
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\Financas.dll.config
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\Financas.dll
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\Financas.pdb
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\EntityFramework.dll
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\EntityFramework.SqlServer.dll
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Helpers.dll
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Mvc.dll
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Razor.dll
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Webpages.Deployment.dll
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Webpages.dll
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Webpages.Razor.dll
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\EntityFramework.xml
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\EntityFramework.SqlServer.xml
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Razor.xml
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Webpages.xml
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Webpages.Deployment.xml
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Webpages.Razor.xml
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Helpers.xml
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\bin\System.Web.Mvc.xml
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\obj\Debug\Financas.dll
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\obj\Debug\Financas.pdb
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\obj\Debug\Financas.Migrations.TabelasIniciais.resources
+C:\Users\sidnei.BELLA-RPC\Documents\Visual Studio 2013\Projects\C-Projects\Financas\Financas\obj\Debug\Financas.csproj.GenerateResource.Cache
+>>>>>>> 1041b6d3612abc7e497578ccc53b75d32172dd67
