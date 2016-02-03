@@ -1,0 +1,7 @@
+﻿select trim(rrf.rdb$field_name) field_name,
+f.rdb$field_type field_type, f.rdb$field_sub_type field_subtype, 
+coalesce(f.rdb$character_length,f.rdb$field_length) field_length, f.rdb$field_scale*-1 field_precision,
+f.rdb$field_length field_size
+from rdb$relation_fields rrf
+join rdb$fields f on f.rdb$field_name = rrf.rdb$field_source
+where rrf.rdb$relation_name = '{0}'

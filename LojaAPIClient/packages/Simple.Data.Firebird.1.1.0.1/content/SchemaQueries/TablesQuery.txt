@@ -1,0 +1,3 @@
+﻿select trim(rdb$relation_name) table_name, iif(rdb$view_blr is not null,'VIEW','TABLE') is_view
+from rdb$relations
+where (rdb$system_flag is null or rdb$system_flag = 0)

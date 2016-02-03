@@ -1,0 +1,14 @@
+﻿select trim(pp.rdb$parameter_name) parameter_name,
+pp.rdb$parameter_type parameter_direction,
+f.rdb$field_type field_type, f.rdb$field_sub_type field_subtype,
+f.rdb$field_length field_length,
+case
+    when pp.rdb$parameter_type=0 and
+    iif(pp.rdb$field_source starting with 'RDB$', f.rdb$default_source, pp.rdb$default_source) is not null then 1
+    else 0
+end is_optional,
+pp.rdb$parameter_number parameter_number
+from RDB$PROCEDURE_PARAMETERS pp
+join rdb$fields f on f.rdb$field_name = pp.rdb$field_source
+where pp.rdb$procedure_name = '{0}'
+order by pp.rdb$parameter_type, pp.rdb$parameter_number

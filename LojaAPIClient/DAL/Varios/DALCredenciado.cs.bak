@@ -1,0 +1,262 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using SQLHelperv2;
+using Negocio;
+using System.Data;
+using Misc;
+
+namespace DAL
+{
+   /// <summary>
+   /// Classe que Gerecia dados da tabela Credenciados(Farmacia)
+   /// </summary>
+   public class DALCredenciado
+   {
+      public static int getCredIdFromCodAcesso(int codAcesso)
+      {
+        SqlParamsList ps = new SqlParamsList();
+        ps.Add(new Fields("@codAcesso", codAcesso));
+        BD BD = new BD();
+        return BD.ExecuteScalar(-1, "select cred_id from credenciados where codacesso = @codAcesso", ps);
+      }
+
+      public static int getCredIdFromCodAcessoESenha(int codAcesso, string senha)
+      {
+        SqlParamsList ps = new SqlParamsList();
+        ps.Add(new Fields("@codAcesso", codAcesso));
+        ps.Add(new Fields("@senha", senha));
+        BD BD = new BD();
+        return BD.ExecuteScalar(-1, "select cred_id from credenciados where codacesso = @codAcesso and senha = @senha", ps);
+      }
+      public static bool VerifSenha(Credenciados cred)
+      {
+         BD BD = new BD();
+         SafeDataReader dr = BD.GetDataReader("Select SENHA from credenciados where APAGADO <> 'S' and CRED_ID = " + cred.Cred_id, null);
+         if (dr.Read())
+         {
+            cred.Senha = dr.GetString(0);
+            dr.Close();
+            return true;
+         }
+         dr.Close();
+         return false;
+      }
+
+      public static bool GetObrigadoPassarSenhaConveniado(Credenciados cred)
+      {
+        BD BD = new BD();
+        SafeDataReader dr = BD.GetDataReader("select coalesce(obrigar_senha,'N') as obrigar_senha FROM EMP_CRED_OBRIGA_SENHA where empres_id = " + cred.Empresa.Empres_id.ToString() + " estab_id = " + cred.Cred_id.ToString(),null);
+        if (dr.Read())
+          return dr.GetString(0) == "S";
+        else
+          return false;
+      }
+
+      public static bool Update(Credenciados cred)
+      {
+         BD BD = new BD();
+         if (BD.ExecuteNoQuery("UPDATE Credenciados SET senha = '" + cred.Senha + "' WHERE cred_id = " + cred.Cred_id, null) == 1)
+            return true;
+         return false;
+      }
+
+      public static Credenciados Get_Id_Senha_Nome(int codacesso)
+      {
+         BD BD = new BD();
+         SafeDataReader dr = BD.GetDataReader("SELECT cred_id, senha, nome  FROM Credenciados WHERE apagado <> 'S' AND codacesso =  " + codacesso, null);
+         Credenciados cred = new Credenciados();
+
+         if (dr.Read())
+         {
+            cred.Senha = dr.GetString("senha");
+            cred.Cred_id = dr.GetInt32("cred_id");
+            cred.Nome = dr.GetString("nome");
+         }
+
+         dr.Close();
+
+         return cred;
+      }
+
+      public static bool LogarCredenciado(string codacesso, string senha, out int cred_id)
+      {
+         bool r = false;
+         cred_id = 0;
+         BD BD = new BD();
+         SafeDataReader dr = BD.GetDataReader("SELECT senha, cred_id FROM Credenciados WHERE codacesso = " + codacesso, null);
+         if (dr.Read())
+         {
+            netUtil.Funcoes f = new netUtil.Funcoes();
+            if (f.Crypt("D", dr.GetString(0), "BIGCOMPRAS") == senha)
+            {
+               r = true;
+               cred_id = dr.GetInt32(1);
+            }
+         }
+         dr.Close();
+
+         return r;
+      }
+
+      public static Credenciados GetCodAcesso_Senha_Nome(int cred_id)
+      {
+         try
+         {
+            BD BD = new BD();
+            SafeDataReader dr = BD.GetDataReader("SELECT codacesso, senha, nome FROM Credenciados WHERE apagado <> 'S' AND cred_id =" + cred_id, null);
+
+            Credenciados cred = new Credenciados();
+
+            if (dr.Read())
+            {
+               cred.Senha = dr.GetString("senha");
+               cred.Codacesso = dr.GetInt32("codacesso");
+               cred.Nome = dr.GetString("nome");
+            }
+
+            dr.Close();
+            return cred;
+         }
+         catch
+         {
+            throw new Exception("Estabelecimento não encontrado para o id: " + cred_id);
+         }
+      }
+
+
+      #region Relatórios WebEstabelecimentos
+
+      // Pega informacoes do proprio Credenciado (Farmacia)
+      // Carrega um novo DataTable para preencher os dados do Credenciado no Relatorio de Valores a Receber</returns>
+      public static DataTable aRecebFornecedor(int cred_id, string pExibirPagto, string faturas)
+      {
+         StringBuilder sql = new StringBuilder();
+         sql.Append(" select cred_id, fornecedor, ");
+         sql.Append(" sum(valor_bruto)  valor_bruto, ");
+         sql.Append(" sum(valor_comiss) valor_comiss, ");
+         sql.Append(" sum(valor_comiss)/sum(valor_bruto) * 100 per_comiss, ");
+         sql.Append(" coalesce((select sum(valor) from get_descontoscred(cred_id,coalesce(sum(valor_bruto),0))),0) as desconto ");
+         sql.Append(" from ");
+         sql.Append(" ( select cred.cred_id, cred.nome as fornecedor, ");
+         sql.Append("   sum(cc.debito-cc.credito) as valor_bruto, ");
+         sql.Append("   sum(cc.debito-cc.credito)/100*(coalesce(cred_emp_lib.comissao,cred.comissao,0)) as valor_comiss ");
+         sql.Append("   from fatura fat ");
+         sql.Append("   join contacorrente cc on cc.fatura_id = fat.fatura_id and coalesce(cc.pagamento_cred_id,0) = 0 ");
+         sql.Append("   and coalesce(cc.baixa_credenciado,'N') = 'N' ");
+         if (pExibirPagto == "S")
+         {
+            sql.Append(" join rel_fat_pag_cred rel on rel.fatura_id = fat.fatura_id ");
+            sql.Append(" and rel.cred_id = cc.cred_id and rel.exibir = 'S' ");
+         }
+         sql.Append("   join credenciados cred on cred.cred_id = cc.cred_id and cred.paga_cred_por_id = 1 ");
+         sql.Append("   join conveniados conv on conv.conv_id = cc.conv_id ");
+         sql.Append("   left join cred_emp_lib on cred_emp_lib.cred_id = cc.cred_id ");
+         sql.Append("   and cred_emp_lib.empres_id = conv.empres_id ");
+         sql.Append("   where coalesce(fat.apagado,'N') <> 'S' ");
+         sql.Append(" and ((coalesce(fat.baixada,'N') = 'S') or (coalesce(fat.pre_baixa,'N') = 'S'))");
+         sql.Append("   and (cred.CRED_ID = " + cred_id + ") ");
+
+         if (!string.IsNullOrEmpty(faturas))
+            sql.Append("   and cc.fatura_id in (" + faturas + ")");
+
+         sql.Append("   group by  cred.comissao, cred.nome, cred.cred_id, cred_emp_lib.comissao ");
+         sql.Append(" ) ");
+         sql.Append(" group by cred_id, fornecedor ");
+
+         BD BD = new BD();
+         DataTable dtFor = BD.GetDataTable(sql.ToString(), null);
+         return dtFor;
+      }
+
+      // Pega informacoes do proprio Credenciado (Farmacia) dentro da data indicada
+      // Carrega um novo DataTable para preencher os dados do Credenciado no Relatorio de Valores Recebidos</returns>
+      public static DataTable RecebidoFornecedor(Extratos ext, int cred_id)
+      {
+         string sql = " SELECT pag.pagamento_cred_id, cred.cred_id, cred.nome AS fornecedor,";
+         sql += " (pag.per_comissao + pag.per_comissao_r) AS per_comiss,";
+         sql += " (pag.valor_comissao_r + pag.valor_comissao) AS valor_comissao, ";
+         sql += " pag.valor_total AS valor_bruto ";
+         sql += " FROM Pagamento_cred pag";
+         sql += " JOIN Credenciados cred ON cred.cred_id = pag.cred_id";
+         sql += " WHERE pag.apagado <> 'S'";
+         sql += " AND cred.cred_id = " + cred_id;
+
+         if (!ext.TodasEmpresas)
+         {
+            string emps = String.Empty;
+            foreach (string e in ext.EmpresasMarcadas.Keys)
+               emps += "," + e;
+            emps = emps.Substring(1);//ignorar a primeira virgula.
+
+            sql += " AND (pag.pagamento_cred_id IN (" + emps + ")) ";
+         }
+         else
+         {
+            sql += " AND data_pgto BETWEEN '" + ext.DataIni.ToString("MM/dd/yyyy 00:00:00") + "'";
+            sql += " AND '" + ext.DataFim.ToString("MM/dd/yyyy 23:59:59") + "'";
+         }
+
+         BD BD = new BD();
+         return BD.GetDataTable(sql, null);
+      }
+
+      // Pega as informações dos Pagamentos do Fornecedor
+      // Datatable para preencher o grid na tela de visualizacao do Relatorio de Valores Recebidos</returns>
+      public static DataTable RecebidoFornecedorGrid(Extratos ext, int cred_id)
+      {
+         string sql = " SELECT pag.pagamento_cred_id, pag.data_hora,pag.valor_total AS valor_bruto,";
+         sql += " (pag.per_comissao + pag.per_comissao_r) AS per_comiss,";
+         sql += " (pag.valor_comissao_r + pag.valor_comissao) AS valor_comissao, ";
+         sql += " ((pag.taxas_fixas + pag.taxas_variaveis) - pag.repasse) AS descontos,";
+         sql += " pag.valor_pago, pagapor.descricao, pag.operador";
+         sql += " FROM Pagamento_cred pag";
+         sql += " JOIN Credenciados cred ON cred.cred_id = pag.cred_id";
+         sql += " JOIN Paga_cred_por pagapor ON pagapor.paga_cred_por_id = pag.paga_cred_por_id";
+         sql += " WHERE pag.apagado <> 'S'";
+         sql += " AND cred.cred_id = " + cred_id;
+         sql += " AND data_pgto BETWEEN '" + ext.DataIni.ToString("MM/dd/yyyy 00:00:00") + "'";
+         sql += " AND '" + ext.DataFim.ToString("MM/dd/yyyy 23:59:59") + "'";
+
+         BD BD = new BD();
+         return BD.GetDataTable(sql, null);
+      }
+
+      #endregion
+
+
+      //Inclusão atualizador 07/2013 - Ariane//
+      public static DataSet DadosCredenciado(int cred_id)
+      {
+          string sql = "SELECT * FROM CREDENCIADOS WHERE CRED_ID = " + cred_id;
+
+          BD BD = new BD();
+          return BD.GetDataSet(sql, null);
+      }
+
+      public static string VerificaSeg(int cred_id)
+      {
+          BD BD = new BD();
+          return (BD.ExecuteScalar("SELECT SEG_ID FROM CREDENCIADOS WHERE CRED_ID = " + cred_id, null).ToString());
+      }
+
+      public static bool UtilizaAutorizador(int cred_id)
+      {
+          BD BD = new BD();
+          SafeDataReader dr = BD.GetDataReader("SELECT UTILIZA_AUTORIZADOR FROM CREDENCIADOS WHERE CRED_ID = " + cred_id, null);
+          if (dr.Read())
+              return dr.GetString(0) == "S";
+          else
+              return false;
+      }
+
+      public static int CredID(int pos_serial_number)
+      {
+          string sql = " SELECT CRED_ID FROM CREDENCIADOS WHERE POS_SERIAL_NUMBER = " + pos_serial_number;
+          BD BD = new BD();
+          int cred_id = (int)BD.ExecuteScalar(sql, null);
+
+          return cred_id;
+      }
+   }
+}

@@ -1,0 +1,6 @@
+﻿select
+  trim(rp.rdb$procedure_name) AS procedure_name
+from
+  rdb$procedures rp
+where
+  rp.rdb$system_flag = 0

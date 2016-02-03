@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E1330E8A-33B4-4172-809D-B8222F4A6C4E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Big.DAL</RootNamespace>
+    <AssemblyName>Big.DAL</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/Big.DAL/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Assembly\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Funcoes, Version=1.0.2511.26515, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Web\bin\Funcoes.dll</HintPath>
+    </Reference>
+    <Reference Include="Misc, Version=1.2011.5.19, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>obj\Debug\Misc.dll</HintPath>
+    </Reference>
+    <Reference Include="Negocio">
+      <HintPath>obj\Debug\Negocio.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="util, Version=1.0.1947.604, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assembly\util.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analysis\DALProdutosAnalysis.cs" />
+    <Compile Include="Analysis\DALRedes.cs" />
+    <Compile Include="Analysis\DALVendas.cs" />
+    <Compile Include="Varios\DALCredComanda.cs" />
+    <Compile Include="Varios\DALCredComandaStatus.cs" />
+    <Compile Include="Varios\DALPos.cs" />
+    <Compile Include="WebFornecedores\DALProdutosAutorizador.cs" />
+    <Compile Include="Varios\DALRecargaConfirmadas.cs" />
+    <Compile Include="Varios\DALRecargaOperadoras.cs" />
+    <Compile Include="Varios\DALRecargaLogon.cs" />
+    <Compile Include="OndeComprar\DALOndeComprar.cs" />
+    <Compile Include="Varios\DALTransacoes.cs" />
+    <Compile Include="Varios\DALPremios.cs" />
+    <Compile Include="Varios\DALPermissoes.cs" />
+    <Compile Include="Varios\DALUsuarios.cs" />
+    <Compile Include="Varios\DALEmpresa.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Varios\DALMensagem.cs" />
+    <Compile Include="Varios\DALDown.cs" />
+    <Compile Include="Varios\DALExtrato.cs" />
+    <Compile Include="Varios\DALCartao.cs" />
+    <Compile Include="Varios\DALProgConv.cs" />
+    <Compile Include="Varios\DALPrograma.cs" />
+    <Compile Include="WebFornecedores\DALConfig.cs" />
+    <Compile Include="WebFornecedores\DALContaCorrente.cs" />
+    <Compile Include="Varios\DALConveniado.cs" />
+    <Compile Include="Varios\DALMisc.cs" />
+    <Compile Include="Varios\DALCredenciado.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebFornecedores\DALDesconto.cs" />
+    <Compile Include="WebFornecedores\DALProduto.cs" />
+    <Compile Include="Varios\DALRecargaReimpressao.cs" />
+    <Compile Include="WebFornecedores\DALTitular.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SQLHelperv2\SQLHelperv2.csproj">
+      <Project>{407D9C86-C7EF-4474-AF0F-604B4D3E6E42}</Project>
+      <Name>SQLHelperv2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

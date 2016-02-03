@@ -34,5 +34,10 @@ namespace LojaRazor.Controllers
             }
         }
 
+        public ActionResult Form2(Usuario u)
+        {
+            return View("");
+        }
+
     }
 }
